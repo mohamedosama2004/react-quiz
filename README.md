@@ -1,70 +1,150 @@
-# Getting Started with Create React App
+# 🧠 React Quiz App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive quiz application built with React that tests your knowledge of React concepts. Features a timed quiz experience with progress tracking, score calculation, and high score persistence.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![JSON Server](https://img.shields.io/badge/JSON_Server-0.17.3-green?style=for-the-badge)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- **📚 Multiple Choice Questions** - Test your React knowledge with carefully crafted questions
+- **⏱️ Timed Quiz** - Challenge yourself with a countdown timer
+- **📊 Progress Tracking** - Visual progress bar showing your advancement through the quiz
+- **🏆 Score System** - Points-based scoring with different values per question
+- **🥇 High Score** - Track your best performance across sessions
+- **🔄 Restart Capability** - Retake the quiz to improve your score
+- **⚡ Real-time Feedback** - Instant visual feedback on correct/incorrect answers
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend:** React 18 with Hooks
+- **State Management:** React Context API + useReducer
+- **Backend:** JSON Server (for quiz questions API)
+- **Styling:** CSS3 with modern design patterns
+- **Testing:** Jest & React Testing Library
 
-### `npm test`
+## 📁 Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+react-quiz/
+├── public/
+│   ├── questions.json      # Quiz questions data
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── App.js          # Main application component
+│   │   ├── Header.js       # App header with logo
+│   │   ├── Main.js         # Main content wrapper
+│   │   ├── StartScreen.js  # Welcome screen
+│   │   ├── Question.js     # Question display
+│   │   ├── Options.js      # Answer options
+│   │   ├── Progress.js     # Progress bar
+│   │   ├── Timer.js        # Countdown timer
+│   │   ├── NextButton.js   # Navigation button
+│   │   ├── FinishScreen.js # Results screen
+│   │   ├── Footer.js       # Footer wrapper
+│   │   ├── Loader.js       # Loading spinner
+│   │   └── Error.js        # Error display
+│   ├── contexts/
+│   │   └── QuizContext.js  # Global state management
+│   ├── index.js            # App entry point
+│   └── index.css           # Global styles
+└── package.json
+```
 
-### `npm run build`
+## 🚀 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js (v14 or higher)
+- npm or yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
 
-### `npm run eject`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mohamedosama2004/react-quiz.git
+   cd react-quiz
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Start the JSON Server** (in one terminal)
+   ```bash
+   npm run server
+   ```
+   This starts the questions API at `http://localhost:9000`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Start the React app** (in another terminal)
+   ```bash
+   npm start
+   ```
+   The app will open at `http://localhost:3000`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📜 Available Scripts
 
-## Learn More
+| Command | Description |
+|---------|-------------|
+| `npm start` | Runs the app in development mode |
+| `npm run server` | Starts JSON Server on port 9000 |
+| `npm test` | Launches the test runner |
+| `npm run build` | Builds the app for production |
+| `npm run eject` | Ejects from Create React App |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎮 How to Play
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Click **"Let's start"** on the welcome screen
+2. Read each question carefully
+3. Select your answer from the multiple choices
+4. Click **"Next"** to proceed to the next question
+5. Keep an eye on the timer! ⏰
+6. View your final score and compare with your high score
+7. Click **"Restart quiz"** to try again
 
-### Code Splitting
+## 🏗️ Architecture
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app uses the **Context API** with **useReducer** for state management, providing:
 
-### Analyzing the Bundle Size
+- Centralized state for quiz data
+- Clean separation of concerns
+- Predictable state updates
+- Easy debugging and testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### State Structure
+- `questions` - Array of quiz questions
+- `status` - Current app status (loading, error, ready, active, finished)
+- `index` - Current question index
+- `answer` - User's selected answer
+- `points` - Accumulated score
+- `highscore` - Best score achieved
+- `secondsRemaining` - Timer countdown
 
-### Making a Progressive Web App
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Contributions are welcome! Feel free to:
 
-### Advanced Configuration
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 License
 
-### Deployment
+This project is open source and available under the [MIT License](LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🙏 Acknowledgments
 
-### `npm run build` fails to minify
+- Built as part of learning React advanced patterns
+- Inspired by modern quiz applications
+- Thanks to the React community for excellent documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+<p align="center">
+  Made with ❤️ and React
+</p>
